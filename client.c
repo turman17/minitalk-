@@ -10,27 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<signal.h>
+#include<unistd.h>
+#include<stdio.h>
+#include<sys/types.h>
 #include <limits.h>
-#include <signal.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <unistd.h>
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
 	int				i;
-	long long int	res;
+	long long int	nbr;
 
+	nbr = 0;
 	i = 0;
-	res = 0;
-	while (nptr[i] >= '0' && nptr[i] <= '9' && nptr[i])
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		res = res * 10 + nptr[i] - '0';
+		nbr = nbr * 10 + str[i] - '0';
 		i++;
-		if (res > INT_MAX)
+		if (nbr > INT_MAX)
 			return (-1);
 	}
-	return (res);
+	return (nbr);
 }
 
 void	conv_bin(char *s, int pidserv)

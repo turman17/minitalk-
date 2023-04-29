@@ -9,17 +9,15 @@ OBJS_SERVER = ${SRCS_SERVER:.c=.o}
 
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -MMD
+CFLAGS = -Wall -Wextra -Werror
 
-all:	${OBJS_SERVER} ${OBJS_CLIENT}
-		${CC} ${CFLAGS} ${SRCS_SERVER} -o ${NAME_SERVER}
-		${CC} ${CFLAGS} ${SRCS_CLIENT} -o ${NAME_CLIENT}
+all: client server
 
 client: ${OBJS_CLIENT}
-		${CC} ${CFLAGS} ${SRCS_CLIENT} -o ${NAME_CLIENT}
+		${CC} ${CFLAGS} ${OBJS_CLIENT} -o ${NAME_CLIENT}
 
 server: ${OBJS_SERVER}
-		${CC} ${CFLAGS} ${SRCS_SERVER} -o ${NAME_SERVER}
+		${CC} ${CFLAGS} ${OBJS_SERVER} -o ${NAME_SERVER}
 
 clean:
 			${RM} ${OBJS_CLIENT} ${OBJS_SERVER} ${OBJS_CLIENTBONUS} ${OBJS_SERVERBONUS}
@@ -29,4 +27,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all client server clean fclean
+.PHONY: all clean fclean

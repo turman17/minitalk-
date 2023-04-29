@@ -54,7 +54,7 @@ void	conv_bin(char *s, int pidserv)
 			else
 				kill(pidserv, SIGUSR2);
 			base = base / 2;
-			usleep(100);
+			usleep(250);
 		}
 		i++;
 	}
